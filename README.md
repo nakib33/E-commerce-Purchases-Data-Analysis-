@@ -36,3 +36,8 @@ The dataset is a CSV file named Cust_Purch_Data.csv and contains the following c
 - weekday: Day of the week when the purchase was made
 - ampm: AM/PM indicator for the purchase time
 - date: Date of the purchase
+
+## 📊Technologies Used
+- Python 3.x
+- Pandas
+- Google Colab (for running the Jupyter notebook)
