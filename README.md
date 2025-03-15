@@ -227,5 +227,171 @@ Result:
 
 ![RFM](Image/3.png)
 
+**10. What is the max, min and average spending?**
+```sql
+print('Max. spending:  ', pay['price(CAD)'].astype(float).max())
+print('Mai. spending:  ', pay['price(CAD)'].astype(float).min())
+print('Avg. spending:  ', pay['price(CAD)'].astype(float).mean())
+```
+
+Result:
+
+```
+Max. spending:   100.0
+Mai. spending:   0.0
+Avg. spending:   49.990775
+```
+
+**11. Who did not spend anything? Company wants to send a deal to encourage the customer to buy stuff!**
+
+```sql
+pay[pay['price(CAD)'] == 0]
+```
+
+Result:
+
+![RFM](Image/4.png)
+
+**12. As a loyalty reward, company wants to send thanks coupon to those who spent 100CAD or more, please find out the customers?**
+
+```sql
+pay[pay['price(CAD)'] >= 100]
+```
+
+Result:
+
+![RFM](Image/5.png)
+
+**13. How many emails are associated with this credit card number '5020000000000230'?**
+
+```sql
+# Ensure the 'cc_no' column is treated as a string
+pay['cc_no'] = pay['cc_no'].astype(str)
+
+# Remove any extra spaces in the credit card numbers
+pay['cc_no'] = pay['cc_no'].str.strip()
+
+# Filter for customers with the specified credit card number
+emails_with_cc = pay[pay['cc_no'] == '5020000000000230']['email']
+
+print(emails_with_cc)
+```
+
+Result:
+
+```
+0    sebvajom@kol.km
+1      acu@jatsot.ug
+Name: email, dtype: object
+```
+
+**14. We need to send new cards to the customers well before the expire, how many cards are expiring in 2019?**
+
+```sql
+# Specify the date format for 'cc_exp' column and convert it to datetime
+pay['cc_exp'] = pd.to_datetime(pay['cc_exp'], format='%m/%d/%Y', errors='coerce')
+
+# Filter the rows where the expiration year is 2019
+expiring_in_2019 = pay[pay['cc_exp'].dt.year == 2019]
+
+# Use count() to get the number of rows with expiration in 2019
+count_expiring_2019 = expiring_in_2019['cc_exp'].count()
+
+# Alternatively, use sum() to check if there is any non-null data
+sum_expiring_2019 = (pay['cc_exp'].dt.year == 2019).sum()
+
+print("Cards expiring in 2019 (count):", count_expiring_2019)
+print("Cards expiring in 2019 (sum):", sum_expiring_2019)
+```
+
+Result:
+
+```
+Cards expiring in 2019 (count): 2684
+Cards expiring in 2019 (sum): 2684
+```
+
+**15. How many people use Visa as their Credit Card Provider?**
+
+```sql
+pay[pay['cc_type'] == 'Visa']['cc_type'].count()
+```
+
+Result:
+
+**1721**
+
+**16. Can you find the customer who spent 100 CAD using Visa?**
+
+```sql
+pay[(pay['cc_type'] == 'Visa') & (pay['price(CAD)'] == 100)]
+```
+
+Result:
+
+![RFM](Image/5.png)
+
+**17. What are two most common professions?**
+
+```sql
+pay['profession'].value_counts().head(2)
+```
+
+Result:
+
+```
+Preschool Teacher       112
+Distribution Manager    107
+```
+
+**18. Can you tell the top 5 most popular email providers? (e.g. gmail.com, yahoo.com, etc...)**
+
+```sql
+# Extract the domain from the 'email' column
+pay['email_domain'] = pay['email'].str.split('@').str[1]
+
+# Get the top 5 most popular email providers
+top_email_providers = pay['email_domain'].value_counts().head(5)
+
+print(top_email_providers)
+```
+
+Result:
+
+```
+gmail.com      1687
+me.com         1676
+outlook.com    1664
+live.com       1660
+hotmail.com    1659
+```
+
+**19. Is there any customer who is using email with "am.edu"?**
+
+```sql
+pay[pay['email'].str.contains('am.edu', na=False)]
+```
+
+Result:
+
+![RFM](Image/6.png)
+
+**20. Which day of the week, the store gets more customers?**
+
+```sql
+day_of_week_counts = pay['weekday'].value_counts()
+days = day_of_week_counts.head(5)
+print(days)
+```
+
+Result:
+
+```
+Saturday     4376
+Wednesday    4365
+Thursday     4327
+Friday       4316
+Monday       4216
+```
 
 
