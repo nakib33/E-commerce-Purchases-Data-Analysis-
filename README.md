@@ -41,3 +41,13 @@ The dataset is a CSV file named Cust_Purch_Data.csv and contains the following c
 - Python 3.x
 - Pandas
 - Google Colab (for running the Jupyter notebook)
+
+**Import Pandas and Read the csv file**
+
+```sql
+ import pandas as pd
+
+ #load file
+ from google.colab import files
+ files.upload()
+```
