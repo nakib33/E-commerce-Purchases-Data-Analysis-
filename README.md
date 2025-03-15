@@ -186,4 +186,46 @@ date          87
 dtype: int64
 ```
 
+**8. How many male customers are 'Structural Engineer'?**
+```sql
+male_structural_engineers = pay[(pay['profession'] == 'Structural Engineer') & (pay['gender'] == 'Male')]
+count_columns = male_structural_engineers.count()
+print(count_columns)
+```
+
+Result:
+
+```
+prefix        43
+first         43
+last          43
+email         43
+gender        43
+age           43
+company       43
+profession    43
+phone         43
+postal        43
+province      43
+cc_no         43
+cc_exp        43
+cc_type       43
+price(CAD)    43
+fav_color     43
+ip            43
+weekday       43
+ampm          43
+date          43
+dtype: int64
+```
+**9. Find out the female Structural Engineers from province Alberta (AB)?**
+```sql
+pay[(pay['profession'] == 'Structural Engineer') & (pay['gender'] == 'Female') & (pay['province'] == 'AB')]
+```
+
+Result:
+
+![RFM](Image/3.png)
+
+
 
