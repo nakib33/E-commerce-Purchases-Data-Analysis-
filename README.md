@@ -130,6 +130,7 @@ Name: first, dtype: int64
 ```
 
 **6. Two customers have the same phone number, can you find those customers?**
+Two customers have the same phone number
 ```sql
 # Count occurrences of each phone number
 duplicate_phones = pay['phone'].value_counts().head(2)
@@ -144,5 +145,18 @@ Result:
 (712) 247-7037    1
 Name: phone, dtype: int64
 ```
+**
+
+can you find those customers
+```Sql
+# Ensure 'phone' column is in string format
+pay['phone'] = pay['phone'].astype(str)
+
+# Find duplicate phone numbers
+pay[pay.duplicated('phone', keep=False)]
+```
+Result:
+
+![RFM](Image/2.png)
 
 
