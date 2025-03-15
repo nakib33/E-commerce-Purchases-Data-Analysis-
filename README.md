@@ -394,7 +394,8 @@ Friday       4316
 Monday       4216
 ```
 
-##Conclusion
+## Conclusion
+
 The E-commerce Purchases Data Analysis project provides a comprehensive exploration of a synthetic dataset containing 30,000 entries, simulating customer transactions in an online shopping environment. The dataset includes various attributes such as customer demographics, purchase details, and payment information, allowing for a wide range of analytical tasks.
 
 Throughout the analysis, several key insights were derived:
