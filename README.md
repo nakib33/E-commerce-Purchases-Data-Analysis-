@@ -44,7 +44,7 @@ The dataset is a CSV file named Cust_Purch_Data.csv and contains the following c
 
 ## 📈Analysis Report Process program and output
 
-**Import Pandas and Read the csv file**
+**1. Import Pandas and Read the csv file**
 
 ```sql
  import pandas as pd
@@ -54,7 +54,7 @@ The dataset is a CSV file named Cust_Purch_Data.csv and contains the following c
  files.upload()
 ```
 
-**Its good idea to see how the data look like, display first 5 rows of your data-set.**
+**2. Its good idea to see how the data look like, display first 5 rows of your data-set.**
 ```sql
 pay = pd.read_csv('Cust_Purch_Data.csv', encoding='utf-8')
 ```
@@ -62,7 +62,7 @@ Result:
 
 ![RFM](Image/1.png)
 
-**How many entries your data have? Can you tell the no. of columns in your data?**
+**3. How many entries your data have? Can you tell the no. of columns in your data?**
 
 ```sql
 pay.info()
@@ -95,4 +95,54 @@ Data columns (total 20 columns):
  19  date        30000 non-null  object 
 dtypes: float64(1), int64(2), object(17)
 ```
+
+**4. What are the max and min ages of your customer? Can you find mean of your customer?**
+
+```sql
+print('Max. age of the customer is:  ', pay['age'].max())
+print('Max. age of the customer is:  ', pay['age'].min())
+print('Avg. age of the customer is:  ', pay['age'].mean())
+```
+Result:
+
+```
+Max. age of the customer is:   65
+Max. age of the customer is:   18
+Avg. age of the customer is:   41.550066666666666
+```
+
+**5. What are the three most common customer's names?**
+```sql
+# Count occurrences of each first name
+common_names = pay['first'].value_counts().head(3)
+# Change the name of the series to 'first' to match the desired output
+common_names.name = 'first'
+# Print the result
+print(common_names)
+```
+Result:
+
+```
+Willie     130
+Francis    124
+Eula        86
+Name: first, dtype: int64
+```
+
+**6. Two customers have the same phone number, can you find those customers?**
+```sql
+# Count occurrences of each phone number
+duplicate_phones = pay['phone'].value_counts().head(2)
+duplicate_phones.name = 'phone'
+# Print the result in the required format
+print(duplicate_phones.head(2))
+```
+Result:
+
+```
+(263) 382-8004    2
+(712) 247-7037    1
+Name: phone, dtype: int64
+```
+
 
