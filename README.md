@@ -153,4 +153,37 @@ Result:
 
 ![RFM](Image/2.png)
 
+**7. How many customers have profession "Structural Engineer"?**
+
+```sql
+structural_engineers = pay[pay['profession'] == 'Structural Engineer']
+count_columns = structural_engineers.count()
+print(count_columns)
+```
+Result:
+
+```
+prefix        87
+first         87
+last          87
+email         87
+gender        87
+age           87
+company       87
+profession    87
+phone         87
+postal        87
+province      87
+cc_no         87
+cc_exp        87
+cc_type       87
+price(CAD)    87
+fav_color     87
+ip            87
+weekday       87
+ampm          87
+date          87
+dtype: int64
+```
+
 
