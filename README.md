@@ -145,8 +145,6 @@ Name: phone, dtype: int64
 
 can you find those customers
 ```Sql
-pay['phone'] = pay['phone'].astype(str)
-
 pay[pay.duplicated('phone', keep=False)]
 ```
 Result:
