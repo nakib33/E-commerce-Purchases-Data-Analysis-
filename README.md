@@ -141,7 +141,6 @@ Result:
 (712) 247-7037    1
 Name: phone, dtype: int64
 ```
-**
 
 can you find those customers
 ```Sql
@@ -245,7 +244,7 @@ Avg. spending:   49.990775
 **11. Who did not spend anything? Company wants to send a deal to encourage the customer to buy stuff!**
 
 ```sql
-pay[pay['price(CAD)'] == 0]
+pay[pay['price(CAD)'] == 0.0]
 ```
 
 Result:
@@ -255,7 +254,7 @@ Result:
 **12. As a loyalty reward, company wants to send thanks coupon to those who spent 100CAD or more, please find out the customers?**
 
 ```sql
-pay[pay['price(CAD)'] >= 100]
+pay[pay['price(CAD)'] >= 100.0]
 ```
 
 Result:
