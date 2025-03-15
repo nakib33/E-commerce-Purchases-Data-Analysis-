@@ -265,16 +265,8 @@ Result:
 **13. How many emails are associated with this credit card number '5020000000000230'?**
 
 ```sql
-# Ensure the 'cc_no' column is treated as a string
-pay['cc_no'] = pay['cc_no'].astype(str)
+pay[pay['cc_no'] == '5020000000000230']['email']
 
-# Remove any extra spaces in the credit card numbers
-pay['cc_no'] = pay['cc_no'].str.strip()
-
-# Filter for customers with the specified credit card number
-emails_with_cc = pay[pay['cc_no'] == '5020000000000230']['email']
-
-print(emails_with_cc)
 ```
 
 Result:
