@@ -53,3 +53,11 @@ The dataset is a CSV file named Cust_Purch_Data.csv and contains the following c
  from google.colab import files
  files.upload()
 ```
+
+**Its good idea to see how the data look like, display first 5 rows of your data-set.**
+```sql
+pay = pd.read_csv('Cust_Purch_Data.csv', encoding='utf-8')
+```
+Result:
+
+![RFM](Image/1.png)
