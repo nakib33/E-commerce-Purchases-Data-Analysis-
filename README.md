@@ -113,11 +113,8 @@ Avg. age of the customer is:   41.550066666666666
 
 **5. What are the three most common customer's names?**
 ```sql
-# Count occurrences of each first name
 common_names = pay['first'].value_counts().head(3)
-# Change the name of the series to 'first' to match the desired output
 common_names.name = 'first'
-# Print the result
 print(common_names)
 ```
 Result:
@@ -130,12 +127,11 @@ Name: first, dtype: int64
 ```
 
 **6. Two customers have the same phone number, can you find those customers?**
+
 Two customers have the same phone number
 ```sql
-# Count occurrences of each phone number
 duplicate_phones = pay['phone'].value_counts().head(2)
 duplicate_phones.name = 'phone'
-# Print the result in the required format
 print(duplicate_phones.head(2))
 ```
 Result:
@@ -149,10 +145,8 @@ Name: phone, dtype: int64
 
 can you find those customers
 ```Sql
-# Ensure 'phone' column is in string format
 pay['phone'] = pay['phone'].astype(str)
 
-# Find duplicate phone numbers
 pay[pay.duplicated('phone', keep=False)]
 ```
 Result:
